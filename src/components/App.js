@@ -1,15 +1,16 @@
-import '../assets/reset.css'
+import '../assets/reset.css';
 
-import styled from 'styled-components'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import styled from 'styled-components';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from './Login'
-import Register from './Register'
-import { useState } from 'react'
-import UserContext from '../contexts/UserContext'
+import Login from './Login';
+import Register from './Register';
+import Products from "./Products";
+import { useState } from 'react';
+import UserContext from '../contexts/UserContext';
 
 export default function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
 
   return (
     <Main>
@@ -18,16 +19,17 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/sign-up" element={<Register />} />
+            <Route path="/products" element={<Products />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
     </Main>
-  )
-}
+  );
+};
 
 const Main = styled.main`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #be3100;
   box-sizing: border-box;
   display: flex;
@@ -38,4 +40,4 @@ const Main = styled.main`
     font-family: 'Splash', cursive;
     font-size: 40px;
   }
-`
+`;
