@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import Products from "./Products";
+import SingleProduct from './SingleProduct';
 import { useState } from 'react';
 import UserContext from '../contexts/UserContext';
 
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/" element={<Login />} />
             <Route path="/sign-up" element={<Register />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:idProduct" element={<SingleProduct />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
