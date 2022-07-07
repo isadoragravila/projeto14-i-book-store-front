@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
 function Product({ name, image, price, id }) {
     const navigate = useNavigate();
@@ -42,16 +43,26 @@ export default function Products() {
     }, []);
 
     return (
-        <Conteiner>
-            {products.map(item => <Product key={item._id} name={item.name} image={item.image} price={item.price} id={item._id} />)}
-        </Conteiner>
+        <Content>
+            <Header />
+            <Conteiner>
+                {products.map(item => <Product key={item._id} name={item.name} image={item.image} price={item.price} id={item._id} />)}
+            </Conteiner>
+        </Content>
+
     )
 }
+
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 const Conteiner = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 80px;
 `;
 
 const ProductBox = styled.div`

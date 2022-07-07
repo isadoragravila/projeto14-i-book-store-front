@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
-
-export default function SingleProduct () {
+export default function SingleProduct() {
     const [product, setProduct] = useState([]);
     const [price, setPrice] = useState(0);
     const { idProduct } = useParams();
@@ -25,21 +25,29 @@ export default function SingleProduct () {
     function addToCart() {
         navigate("/cart");
     }
-    
-    return(
-        <ProductBox>
-            <Name>{product.name}</Name>
-            <img src={product.image} alt={product.name} />
-            <Description>{product.description}</Description>
-            <Price>R$ {price.toFixed(2).replace('.', ',')}</Price>
-            <AddCart onClick={addToCart}>Adicionar ao carrinho</AddCart>
-    </ProductBox>
+
+    return (
+        <Content>
+            <Header />
+            <ProductBox>
+                <Name>{product.name}</Name>
+                <img src={product.image} alt={product.name} />
+                <Description>{product.description}</Description>
+                <Price>R$ {price.toFixed(2).replace('.', ',')}</Price>
+                <AddCart onClick={addToCart}>Adicionar ao carrinho</AddCart>
+            </ProductBox>
+        </Content>
     )
 }
 
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 const ProductBox = styled.div`
     width: 300px;
-    height: 580px;
+    height: 540px;
     margin: 10px;
     padding: 15px;
     background-color: #F5E9DA;
@@ -49,6 +57,7 @@ const ProductBox = styled.div`
     justify-content: space-around;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 80px;
     img {
         width: 200px;
         height: 299px;
@@ -69,7 +78,7 @@ const Name = styled.div`
     color: #000000;
 `;
 const Price = styled.div`
-    font-size: 26px;
+    font-size: 23px;
     text-align: center;
     color: #000000;
 `;
