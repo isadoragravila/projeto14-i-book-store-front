@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function Input({ onChange, value, type, name, placeholder, maxLength }) {
+export default function Input({ onChange, value, type, name, placeholder, maxLength, mask }) {
     return (
-        <InputCss maxlength={maxLength} onChange={onChange} value={value} type={type} name={name} placeholder={placeholder} />
+        <InputCss onChange={onChange} value={value} type={type} name={name} placeholder={placeholder} />
     )
 }
 
