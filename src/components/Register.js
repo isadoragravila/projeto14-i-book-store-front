@@ -21,7 +21,7 @@ export default function Register() {
   function handleInputChange(e) {
     /*if (e.target.name === 'cpf') {
       setFormData({ ...formData, cpf: cpfMask(e.target.value) })
-      console.log(formData.cpf)
+      console.log(cpfMask(e.target.value))
     } else {*/
       setFormData({ ...formData, [e.target.name]: e.target.value })
     //}
@@ -37,7 +37,10 @@ export default function Register() {
       formData.password !== '' &&
       formData.address !== ''
     ) {
-      const promise = axios.post(URL, {...formData, cpf: cpfMask(formData.cpf)})
+      const promise = axios.post(URL, {
+        ...formData,
+        cpf: cpfMask(formData.cpf),
+      })
       promise
         .then(() => {
           alert('Cadastro salvo com sucesso')
@@ -58,13 +61,13 @@ export default function Register() {
     }
   }
 
-  const cpfMask = (value) => {
+  function cpfMask(value) {
     return value
-      .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
-      .replace(/(\d{3})(\d)/, '$1.$2') // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
+      .replace(/\D/g, '')
+      .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d{1,2})/, '$1-$2')
-      //.replace(/(-\d{2})\d+?$/, '$1') // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
+      .replace(/(-\d{2})\d+?$/, '$1')
   }
 
   return (
@@ -88,7 +91,6 @@ export default function Register() {
           name="cpf"
           onChange={handleInputChange}
           placeholder="CPF"
-          maxLength='11'
           required
         />
         <Input
