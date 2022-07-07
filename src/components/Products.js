@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Product({ name, image, price }) {
+function Product({ name, image, price, id }) {
     const navigate = useNavigate();
 
     function goToProduct() {
-        navigate("/products/id");
+        navigate(`/products/${id}`);
     }
 
     function addToCart() {
@@ -43,7 +43,7 @@ export default function Products() {
 
     return (
         <Conteiner>
-            {products.map(item => <Product key={item._id} name={item.name} image={item.image} price={item.price} />)}
+            {products.map(item => <Product key={item._id} name={item.name} image={item.image} price={item.price} id={item._id} />)}
         </Conteiner>
     )
 }
@@ -59,12 +59,13 @@ const ProductBox = styled.div`
     height: 290px;
     margin: 10px;
     padding: 5px;
+    background-color: #F5E9DA;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     border-radius: 5px;
-    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     img {
         width: 129px;
         height: 193px;
@@ -81,7 +82,7 @@ const Name = styled.div`
     font-size: 16px;
     text-align: center;
     margin: 5px;
-    color: #ffffff;
+    color: #000000;
 `;
 const Bottom = styled.div`
     width: 100%;
@@ -95,7 +96,7 @@ const Bottom = styled.div`
 const Price = styled.div`
     font-size: 16px;
     text-align: center;
-    color: #ffffff;
+    color: #000000;
 `;
 
 const AddCart = styled.div`
