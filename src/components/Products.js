@@ -1,19 +1,34 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Header from './Header';
+import UserContext from '../contexts/UserContext';
 
 function Product({ name, image, price, id }) {
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
 
     function goToProduct() {
         navigate(`/products/${id}`);
     }
 
     function addToCart() {
-        navigate("/cart");
+        const body = { productId: id };
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${user.token}`
+            }
+        }
+        const promise = axios.put("http://localhost:5000/cart", body, config);
+        promise.then(() => {
+            navigate("/cart");
+        });
+        promise.catch(err => {
+            alert(err.response.data);
+        });
     }
+
     return (
         <ProductBox>
             <ClickProduct onClick={goToProduct}>
@@ -34,7 +49,6 @@ export default function Products() {
     useEffect(() => {
         const promise = axios.get("http://localhost:5000/products");
         promise.then(response => {
-            console.log(response.data);
             setProducts(response.data);
         });
         promise.catch(err => {
