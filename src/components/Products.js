@@ -49,19 +49,20 @@ export default function Products() {
 }
 
 const Conteiner = styled.div`
-    width: 375px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 `;
 
 const ProductBox = styled.div`
     width: 150px;
-    min-height: 200px;
+    height: 290px;
     margin: 10px;
     padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     border-radius: 5px;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     img {
@@ -74,38 +75,42 @@ const ClickProduct = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 `;
 const Name = styled.div`
     font-size: 16px;
     text-align: center;
     margin: 5px;
+    color: #ffffff;
 `;
 const Bottom = styled.div`
-    width: 120px;
-    margin: 10px;
+    width: 100%;
+    padding: 0 10px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 `;
 
 const Price = styled.div`
     font-size: 16px;
     text-align: center;
-    margin: 5px;
+    color: #ffffff;
 `;
 
 const AddCart = styled.div`
     display: flex;
     align-items: center;
-    text-align: center;
+    justify-content: center;
     width: 35px;
     height: 25px;
-    background-color: #be3100;
+    background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 
     ion-icon {
         font-size: 20px;
-        color: #ffffff;
+        color: #be3100;
     }
 `;
