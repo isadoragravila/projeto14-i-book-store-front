@@ -21,7 +21,6 @@ export default function Register() {
   function handleInputChange(e) {
     /*if (e.target.name === 'cpf') {
       setFormData({ ...formData, cpf: cpfMask(e.target.value) })
-      console.log(cpfMask(e.target.value))
     } else {*/
       setFormData({ ...formData, [e.target.name]: e.target.value })
     //}

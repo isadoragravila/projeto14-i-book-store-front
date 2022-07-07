@@ -33,7 +33,6 @@ export default function Products() {
     useEffect(() => {
         const promise = axios.get("http://localhost:5000/products");
         promise.then(response => {
-            console.log(response.data);
             setProducts(response.data);
         });
         promise.catch(err => {
