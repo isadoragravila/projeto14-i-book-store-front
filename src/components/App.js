@@ -7,6 +7,7 @@ import Login from './Login';
 import Register from './Register';
 import Products from "./Products";
 import SingleProduct from './SingleProduct';
+import Cart from './Cart';
 import { useState } from 'react';
 import UserContext from '../contexts/UserContext';
 
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/sign-up" element={<Register />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:idProduct" element={<SingleProduct />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
