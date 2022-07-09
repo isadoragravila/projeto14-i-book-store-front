@@ -8,6 +8,7 @@ import UserContext from '../contexts/UserContext';
 export default function SingleProduct() {
     const [product, setProduct] = useState([]);
     const [price, setPrice] = useState(0);
+    const [quantity, setQuantity] = useState(0);
     const { idProduct } = useParams();
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
@@ -17,6 +18,7 @@ export default function SingleProduct() {
         promise.then(response => {
             setProduct(response.data);
             setPrice(response.data.price);
+            setQuantity(response.data.quantity);
         });
         promise.catch(err => {
             alert(err.response.data);
@@ -24,6 +26,10 @@ export default function SingleProduct() {
     }, []);
 
     function addToCart() {
+        if (quantity <= 0) {
+            alert("Produto indisponível");
+            return;
+        }
         const body = { productId: idProduct };
         const config = {
             headers: {
@@ -46,7 +52,11 @@ export default function SingleProduct() {
                 <Name>{product.name}</Name>
                 <img src={product.image} alt={product.name} />
                 <Description>{product.description}</Description>
-                <Price>R$ {price.toFixed(2).replace('.', ',')}</Price>
+                {quantity > 0 ?
+                    (<Price>R$ {price.toFixed(2).replace('.', ',')}</Price>
+                    ) : (
+                        <Price>Indisponível</Price>
+                    )}
                 <AddCart onClick={addToCart}>Adicionar ao carrinho</AddCart>
             </ProductBox>
         </Content>

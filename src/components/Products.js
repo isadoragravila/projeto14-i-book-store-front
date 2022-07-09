@@ -5,7 +5,7 @@ import axios from 'axios';
 import Header from './Header';
 import UserContext from '../contexts/UserContext';
 
-function Product({ name, image, price, id }) {
+function Product({ name, image, price, id, quantity }) {
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
 
@@ -14,6 +14,10 @@ function Product({ name, image, price, id }) {
     }
 
     function addToCart() {
+        if (quantity <= 0) {
+            alert("Produto indisponível");
+            return;
+        }
         const body = { productId: id };
         const config = {
             headers: {
@@ -36,7 +40,11 @@ function Product({ name, image, price, id }) {
                 <img src={image} alt={name} />
             </ClickProduct>
             <Bottom>
-                <Price>R$ {price.toFixed(2).replace('.', ',')}</Price>
+                {quantity > 0 ?
+                    (<Price>R$ {price.toFixed(2).replace('.', ',')}</Price>
+                    ) : (
+                        <Price>Indisponível</Price>
+                    )}
                 <AddCart onClick={addToCart}><ion-icon name="cart"></ion-icon></AddCart>
             </Bottom>
         </ProductBox>
@@ -60,7 +68,7 @@ export default function Products() {
         <Content>
             <Header />
             <Conteiner>
-                {products.map(item => <Product key={item._id} name={item.name} image={item.image} price={item.price} id={item._id} />)}
+                {products.map(item => <Product key={item._id} name={item.name} image={item.image} price={item.price} id={item._id} quantity={item.quantity} />)}
             </Conteiner>
         </Content>
 
