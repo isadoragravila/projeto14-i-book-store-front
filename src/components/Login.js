@@ -57,7 +57,7 @@ export default function Login() {
         />
         <Input
           value={formData.password}
-          type="text"
+          type="password"
           name="password"
           onChange={handleInputChange}
           placeholder="Senha"
