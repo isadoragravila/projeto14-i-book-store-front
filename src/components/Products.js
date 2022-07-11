@@ -26,7 +26,7 @@ function Product({ name, image, price, id, quantity }) {
         }
         const promise = axios.put("https://i-book-store-back.herokuapp.com/cart/add-one", body, config);
         promise.then(() => {
-            navigate("/cart");
+            alert("Produto adicionado no carrinho!");
         });
         promise.catch(err => {
             alert(err.response.data);

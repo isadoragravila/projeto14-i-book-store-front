@@ -15,4 +15,5 @@ const ButtonCss = styled.button`
     border: none;
     border-radius: 5px;
     font-weight: 700;
+    cursor: pointer;
 `

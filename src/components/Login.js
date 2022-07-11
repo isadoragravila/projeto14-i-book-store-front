@@ -86,6 +86,7 @@ const Container = styled.section`
     font-size: 15px;
     color: #f5f0eb;
     margin-top: 36px;
+    cursor: pointer;
   }
 `
 
