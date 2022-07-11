@@ -89,7 +89,7 @@ const Conteiner = styled.div`
 
 const ProductBox = styled.div`
     width: 160px;
-    height: 290px;
+    height: 300px;
     margin: 10px;
     padding: 5px;
     background-color: #F5E9DA;
