@@ -90,6 +90,8 @@ const ProductBox = styled.div`
 `;
 const Description = styled.div`
     font-size: 15px;
+    height: 150px;
+    overflow-y: scroll;
     text-align: center;
     margin: 15px 5px;
     color: #000000;
