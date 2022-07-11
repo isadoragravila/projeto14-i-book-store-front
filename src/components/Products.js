@@ -24,7 +24,7 @@ function Product({ name, image, price, id, quantity }) {
                 "Authorization": `Bearer ${user.token}`
             }
         }
-        const promise = axios.put("http://localhost:5000/cart", body, config);
+        const promise = axios.put("http://localhost:5000/cart/add-one", body, config);
         promise.then(() => {
             navigate("/cart");
         });

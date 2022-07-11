@@ -26,7 +26,7 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
           "Authorization": `Bearer ${user.token}`
         }
       }
-      const promise = axios.put(`http://localhost:5000/cart/delete`, body, config);
+      const promise = axios.put(`http://localhost:5000/cart/delete-all`, body, config);
       promise.then(() => {
         getCart();
       });
@@ -34,6 +34,38 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
         alert(err.response.data);
       });
     }
+  }
+
+  function addOneProduct() {
+    const body = { productId: idProduct };
+    const config = {
+      headers: {
+        "Authorization": `Bearer ${user.token}`
+      }
+    }
+    const promise = axios.put("http://localhost:5000/cart/add-one", body, config);
+    promise.then(() => {
+      getCart();
+    });
+    promise.catch(err => {
+      alert(err.response.data);
+    });
+  }
+
+  function removeOneProduct() {
+    const body = { productId: idProduct };
+    const config = {
+      headers: {
+        "Authorization": `Bearer ${user.token}`
+      }
+    }
+    const promise = axios.put("http://localhost:5000/cart/delete-one", body, config);
+    promise.then(() => {
+      getCart();
+    });
+    promise.catch(err => {
+      alert(err.response.data);
+    });
   }
 
   function getCart() {
@@ -57,8 +89,18 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
       <Content>
         <p>{product.name}</p>
         <Values>
-          <p>{quantity} un.</p>
-          <p>R$ {(product.price * quantity).toFixed(2).replace('.', ',')}</p>
+          <Quantity>
+            <Icon onClick={addOneProduct}>
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </Icon>
+            <p>{quantity} un.</p>
+            <Icon onClick={removeOneProduct}>
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </Icon>
+          </Quantity>
+          <Price>
+            <p>R$ {(product.price * quantity).toFixed(2).replace('.', ',')}</p>
+          </Price>
         </Values>
         <Trash onClick={deleteProduct}>
           <ion-icon name="trash-outline"></ion-icon>
@@ -97,10 +139,40 @@ const Content = styled.div`
 const Values = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
   padding: 10px;
   p {
     font-size: 17px;
+  }
+`;
+
+const Quantity = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  padding: 3px;
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+  p {
+    margin: 5px 0;
+  }
+`;
+
+const Icon = styled.div`
+  ion-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #be3100;
+  }
+`;
+
+const Price = styled.div`
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+  p {
+    margin: 5px;
   }
 `;
 
