@@ -24,7 +24,7 @@ function Product({ name, image, price, id, quantity }) {
                 "Authorization": `Bearer ${user.token}`
             }
         }
-        const promise = axios.put("http://localhost:5000/cart/add-one", body, config);
+        const promise = axios.put("https://i-book-store-back.herokuapp.com/cart/add-one", body, config);
         promise.then(() => {
             navigate("/cart");
         });
@@ -55,7 +55,7 @@ export default function Products() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        const promise = axios.get("http://localhost:5000/products");
+        const promise = axios.get("https://i-book-store-back.herokuapp.com/products");
         promise.then(response => {
             setProducts(response.data);
         });

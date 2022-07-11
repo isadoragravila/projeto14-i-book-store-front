@@ -14,7 +14,7 @@ export default function SingleProduct() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        const promise = axios.get(`http://localhost:5000/products/${idProduct}`);
+        const promise = axios.get(`https://i-book-store-back.herokuapp.com/products/${idProduct}`);
         promise.then(response => {
             setProduct(response.data);
             setPrice(response.data.price);
@@ -36,7 +36,7 @@ export default function SingleProduct() {
                 "Authorization": `Bearer ${user.token}`
             }
         }
-        const promise = axios.put("http://localhost:5000/cart/add-one", body, config);
+        const promise = axios.put("https://i-book-store-back.herokuapp.com/cart/add-one", body, config);
         promise.then(() => {
             navigate("/cart");
         });
@@ -70,7 +70,7 @@ const Content = styled.div`
 
 const ProductBox = styled.div`
     width: 330px;
-    height: 540px;
+    min-height: 500px;
     margin: 10px;
     padding: 15px;
     background-color: #F5E9DA;
@@ -88,21 +88,22 @@ const ProductBox = styled.div`
     }
 `;
 const Description = styled.div`
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
-    margin: 5px;
+    margin: 15px 5px;
     color: #000000;
 `;
 const Name = styled.div`
     font-size: 26px;
     font-weight: bold;
     text-align: center;
-    margin: 5px;
+    margin: 5px 5px 15px 5px;
     color: #000000;
 `;
 const Price = styled.div`
     font-size: 23px;
     text-align: center;
+    margin-bottom: 15px;
     color: #000000;
 `;
 const AddCart = styled.div`
