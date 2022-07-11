@@ -69,7 +69,7 @@ const Content = styled.div`
 `;
 
 const ProductBox = styled.div`
-    width: 300px;
+    width: 330px;
     height: 540px;
     margin: 10px;
     padding: 15px;
