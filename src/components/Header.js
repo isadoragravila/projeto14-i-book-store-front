@@ -36,9 +36,6 @@ export default function Header() {
         <Options>
           <ion-icon onClick={menuToggle} name="menu-outline"></ion-icon>
         </Options>
-        <Options>
-          <ion-icon onClick={logOut} name="log-out-outline"></ion-icon>
-        </Options>
       </Menu>
       {sidebar ? (
         <Ul>
@@ -72,12 +69,11 @@ const Conteiner = styled.div`
 const Logo = styled.h1`
   font-size: 35px;
   color: #be3100;
+  cursor: pointer;
 `
 
 const Menu = styled.div`
   display: flex;
-  width: 100px;
-  justify-content: space-around;
   ion-icon {
     font-size: 25px;
     color: #be3100;
@@ -91,6 +87,7 @@ const Options = styled.div`
   height: 40px;
   border-radius: 5px;
   box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 `
 
 const Ul = styled.ul`
@@ -109,5 +106,6 @@ const Ul = styled.ul`
     color: #be3100;
     font-size: 20px;
     margin: 3px;
+    cursor: pointer;
   }
 `

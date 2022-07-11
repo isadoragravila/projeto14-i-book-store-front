@@ -38,6 +38,7 @@ export default function SingleProduct() {
         }
         const promise = axios.put("https://i-book-store-back.herokuapp.com/cart/add-one", body, config);
         promise.then(() => {
+            alert("Produto adicionado no carrinho!");
             navigate("/cart");
         });
         promise.catch(err => {

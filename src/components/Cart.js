@@ -54,8 +54,7 @@ export default function Cart() {
             await axios.post("https://i-book-store-back.herokuapp.com/sales", body, config);
             await axios.delete("https://i-book-store-back.herokuapp.com/sales", config);
             await axios.put("https://i-book-store-back.herokuapp.com/inventory", cartProducts, config);
-            //mudar rota para o checkout
-            navigate("/products");
+            navigate("/checkout");
         } catch (error) {
             console.log(error);
             alert(error);
