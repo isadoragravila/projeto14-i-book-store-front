@@ -66,6 +66,7 @@ export default function Cart() {
         <Content>
             <Header />
             <Purchases>
+                {cartProducts.length === 0 ? <p>Seu carrinho está vazio</p> : null}
                 {cartProducts.map((item, index) => <ProductCart key={index} idProduct={item.productId} quantity={item.quantity} setCartProducts={setCartProducts} />)}
                 <Total>Valor total: <div>R$ {price().toFixed(2).replace('.', ',')}</div></Total>
                 <Payment>
@@ -160,4 +161,5 @@ const Box = styled.div`
     border: 1px ${props => props.border} solid;
     border-radius: 5px;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 `;
