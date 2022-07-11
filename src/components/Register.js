@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 export default function Register() {
   const navigate = useNavigate()
-  const URL = 'http://localhost:5000/sign-up'
+  const URL = 'https://i-book-store-back.herokuapp.com/sign-up'
 
   const [formData, setFormData] = useState({
     name: '',

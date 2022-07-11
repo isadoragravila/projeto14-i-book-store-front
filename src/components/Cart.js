@@ -18,7 +18,7 @@ export default function Cart() {
                 "Authorization": `Bearer ${user.token}`
             }
         }
-        const promise = axios.get(`http://localhost:5000/cart`, config);
+        const promise = axios.get(`https://i-book-store-back.herokuapp.com/cart`, config);
         promise.then(response => {
             setCartProducts(response.data);
         });
@@ -51,9 +51,9 @@ export default function Cart() {
             }
         }
         try {
-            await axios.post("http://localhost:5000/sales", body, config);
-            await axios.delete("http://localhost:5000/sales", config);
-            await axios.put("http://localhost:5000/inventory", cartProducts, config);
+            await axios.post("https://i-book-store-back.herokuapp.com/sales", body, config);
+            await axios.delete("https://i-book-store-back.herokuapp.com/sales", config);
+            await axios.put("https://i-book-store-back.herokuapp.com/inventory", cartProducts, config);
             //mudar rota para o checkout
             navigate("/products");
         } catch (error) {

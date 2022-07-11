@@ -8,7 +8,7 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    const promise = axios.get(`http://localhost:5000/products/${idProduct}`);
+    const promise = axios.get(`https://i-book-store-back.herokuapp.com/products/${idProduct}`);
     promise.then((response) => {
       setProduct(response.data);
     });
@@ -26,7 +26,7 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
           "Authorization": `Bearer ${user.token}`
         }
       }
-      const promise = axios.put(`http://localhost:5000/cart/delete-all`, body, config);
+      const promise = axios.put(`https://i-book-store-back.herokuapp.com/cart/delete-all`, body, config);
       promise.then(() => {
         getCart();
       });
@@ -43,7 +43,7 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
         "Authorization": `Bearer ${user.token}`
       }
     }
-    const promise = axios.put("http://localhost:5000/cart/add-one", body, config);
+    const promise = axios.put("https://i-book-store-back.herokuapp.com/cart/add-one", body, config);
     promise.then(() => {
       getCart();
     });
@@ -59,7 +59,7 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
         "Authorization": `Bearer ${user.token}`
       }
     }
-    const promise = axios.put("http://localhost:5000/cart/delete-one", body, config);
+    const promise = axios.put("https://i-book-store-back.herokuapp.com/cart/delete-one", body, config);
     promise.then(() => {
       getCart();
     });
@@ -74,7 +74,7 @@ export default function ProductCart({ idProduct, quantity, setCartProducts }) {
         "Authorization": `Bearer ${user.token}`
       }
     }
-    const promise = axios.get(`http://localhost:5000/cart`, config);
+    const promise = axios.get(`https://i-book-store-back.herokuapp.com/cart`, config);
     promise.then(response => {
       setCartProducts(response.data);
     });
@@ -138,6 +138,7 @@ const Content = styled.div`
 
 const Values = styled.div`
   display: flex;
+  width: 200px;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
