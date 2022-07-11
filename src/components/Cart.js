@@ -66,7 +66,7 @@ export default function Cart() {
         <Content>
             <Header />
             <Purchases>
-                {cartProducts.map((item, index) => <ProductCart key={index} idProduct={item.productId} quantity={item.quantity} />)}
+                {cartProducts.map((item, index) => <ProductCart key={index} idProduct={item.productId} quantity={item.quantity} setCartProducts={setCartProducts} />)}
                 <Total>Valor total: <div>R$ {price().toFixed(2).replace('.', ',')}</div></Total>
                 <Payment>
                     <p>Forma de pagamento:</p>
@@ -87,7 +87,7 @@ const Content = styled.div`
 `;
 
 const Purchases = styled.div`
-    width: 300px;
+    width: 330px;
     margin: 10px;
     padding: 15px;
     background-color: #F5E9DA;
